@@ -24,6 +24,17 @@
             "module": {
                 "name": "path:./middlewares/pagination"
             }
+        },
+        "appsec": {
+            "priority": 110,
+            "module": {
+                "name": "lusca",
+                "arguments": [
+                    {
+                        "csrf": false
+                    }
+                ]
+            }
         }
     },
     "app": {}

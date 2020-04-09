@@ -20,19 +20,14 @@ module.exports = {
             },
         }
     },
-    '400, 404, 500': {
+    '400, 404': {
         response: {
             defaults: {
                 string: {
-                    field: 'error',
-                    defaultValue: 'Default Error',
+                    field: 'reason',
+                    defaultValue: '',
                     hideIfNotExist: true,
                 },
-                object: {
-                    field: 'error',
-                    defaultValue: {},
-                    hideIfNotExist: true,
-                }
             },
         },
     },
