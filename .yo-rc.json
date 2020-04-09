@@ -1,0 +1,12 @@
+{
+    "generator-varnode": {
+        "promptValues": {
+            "description": "An assignment for an interview",
+            "db": "Mongoose",
+            "isCorsEnable": false,
+            "isCustomizeResponseAppenderEnable": true,
+            "isSocketIoEnable": false,
+            "frontend": "React"
+        }
+    }
+}
