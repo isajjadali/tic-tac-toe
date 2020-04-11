@@ -1,12 +1,16 @@
 'use strict';
 
 import React from 'react';
-import styles from './Index.scss';
 import { withRouter } from 'react-router-dom';
 import GameService from '../../shared/services/games';
 import Listing from '../../containers/Listing/Index';
-
 import { RoutesConfiguration } from '../../shared/configuations/routes';
+import {
+    Button,
+    Container,
+    Row,
+    Col
+} from 'react-bootstrap';
 class Home extends React.Component {
 
     constructor(props) {
@@ -26,12 +30,18 @@ class Home extends React.Component {
 
     render() {
         return (
-            <div className="home">
-                <div>
-                    <button onClick={() => this.onPlayGame()}>Play Game</button>
-                </div>
-                <Listing />
-            </div>
+            <Container>
+                <Row className="p-5">
+                    <Col className="center-align-item">
+                        <Button className="p-3" onClick={() => this.onPlayGame()}>Play New Game</Button>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        <Listing />
+                    </Col>
+                </Row>
+            </Container>
         );
     }
 }

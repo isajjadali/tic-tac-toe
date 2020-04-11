@@ -1,7 +1,8 @@
 .block {
-    width: 164px;
-    background: white;
     height: 125px;
-    display: inline-block;
     border: 1px solid gray;
+
+    span {
+        font-size: 100px;
+    }
 }

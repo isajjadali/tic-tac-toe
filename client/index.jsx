@@ -4,14 +4,18 @@ import styles from "./styles/main.scss";
 import { axiosInterceptor } from './shared/utils/interceptors';
 axiosInterceptor();
 
-import Navbar from './components/Navbar/Index';
+import CustomizeNavbar from './components/CustomizeNavbar/Index';
 import Content from './components/Content/Index';
 
 class App extends React.Component {
     render() {
         return (
             <React.Fragment>
-                <Navbar title="Tic Tac Toe" />
+                <CustomizeNavbar 
+                    title="Tic Tac Toe"
+                    portfolioLink="https://isajjadali.github.io/"
+                    createdBy="Sajjad Ali (Javascript Full Stack Engineer)"
+                />
                 <Content />
             </React.Fragment>
         )

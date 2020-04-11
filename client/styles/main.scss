@@ -1,7 +1,4 @@
-body {
-    overflow: hidden !important;
-    margin: 0;
-}
+@import "~bootstrap/scss/bootstrap";
 
 .center-align-item {
     display: flex !important;
@@ -9,13 +6,23 @@ body {
     align-items: center !important;
 }
 
-
-.error {
-    @extend .center-align-item;
-    height: 100%;
-}
-
 .disabled {
     pointer-events: none;
     cursor: not-allowed;
+}
+
+.running {
+    @extend .text-primary;
+}
+
+.x_won {
+    @extend .text-success;
+}
+
+.o_won {
+    @extend .text-danger;
+}
+
+.draw {
+    @extend .text-warning;
 }

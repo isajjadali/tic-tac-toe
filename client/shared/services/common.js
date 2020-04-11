@@ -15,18 +15,21 @@ export function actionsBuilder({ Statuses } = {}) {
             ...defaultConfig,
             title: 'Play',
             command: 'onPlay',
+            variant: 'success',
             precondition: (status) => status === Statuses.Running,
         },
         {
             ...defaultConfig,
             title: 'View',
             command: 'onPlay',
+            variant: 'primary',
             precondition: (status) => status !== Statuses.Running,
         },
         {
             ...defaultConfig,
             title: 'Delete',
             command: 'onDelete',
+            variant: 'danger',
         }
     ]
 }

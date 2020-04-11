@@ -1,13 +1,17 @@
 import React from 'react';
 import styles from './index.scss';
+import {
+    Button,
+    Table,
+} from 'react-bootstrap';
 
-export default function Table(props) {
+export default function DataTable(props) {
     const { columns, dataItems, actions } = props;
 
     return (
         dataItems.length
             ?
-            <table>
+            <Table striped bordered hover responsive>
                 <thead>
                     <tr>
                         {
@@ -35,6 +39,7 @@ export default function Table(props) {
                                                     return (
                                                         <td
                                                             key={$index}
+                                                            className={column.cssClasses}
                                                         >
 
                                                             {index + 1}
@@ -45,16 +50,19 @@ export default function Table(props) {
                                                     return (
                                                         <td
                                                             key={$index}
+                                                            className="center-align-item"
                                                         >
                                                             {
                                                                 (row[column.field] || []).map((action, $$index) => {
                                                                     return (
-                                                                        <button
+                                                                        <Button
                                                                             key={$$index}
                                                                             onClick={() => actions[action.command](row)}
+                                                                            variant={action.variant}
+                                                                            className="mr-2"
                                                                         >
                                                                             {action.title}
-                                                                        </button>
+                                                                        </Button>
                                                                     )
                                                                 })
                                                             }
@@ -65,8 +73,9 @@ export default function Table(props) {
                                                     return (
                                                         <td
                                                             key={$index}
+                                                            className={`${column.cssClasses} ${(row[column.field] || '').toLowerCase()}`}
                                                         >
-                                                            {column.callback ? column.callback(row[column.field]) : row[column.field]}
+                                                            {column.callback ? column.callback(row[column.field], column) : row[column.field]}
                                                         </td>
                                                     );
                                                 }
@@ -78,7 +87,7 @@ export default function Table(props) {
                         })
                     }
                 </tbody>
-            </table>
+            </Table>
             : null
     );
 }

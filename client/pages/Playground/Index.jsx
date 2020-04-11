@@ -3,13 +3,18 @@
 import React from 'react';
 import styles from './Index.scss';
 import { withRouter } from 'react-router-dom';
-import Table from '../../components/Table/Index';
+import DataTable from '../../components/DataTable/Index';
 import { ListingColumns } from '../../shared/configuations/grid';
 import Enums from '../../shared/utils/enums';
 import GameService from '../../shared/services/games';
 import Block from '../../containers/Block/Index';
 import { convertBoard, parseBoard } from '../../shared/services/common';
-
+import {
+    Button,
+    Container,
+    Row,
+    Col
+} from 'react-bootstrap';
 class Playground extends React.Component {
 
     constructor(props) {
@@ -82,38 +87,58 @@ class Playground extends React.Component {
     render() {
         const { game, error } = this.state;
         return (
-            <div className="playground">
-                {
-                    error ?
-                        <div className="error">
-                            <h2>{error}</h2>
-                        </div>
-                        :
-                        <React.Fragment>
-                            <div>
-                                <button onClick={() => this.onBack()}>Back</button>
-                                <Table
-                                    columns={this.columns}
-                                    dataItems={[this.state.game]}
-                                />
-                            </div>
-                            <div className={`block-container ${game.status !== Enums.Statuses.Running ? 'disabled' : ''}`}>
-                                {
-                                    game.board.map((move, index) => {
-                                        return (
-                                            <Block
-                                                key={index}
-                                                blockNumber={index}
-                                                move={move}
-                                                onSelectingMove={this.onSelectingMove.bind(this)}
-                                            />
-                                        )
-                                    })
-                                }
-                            </div>
-                        </React.Fragment>
-                }
-            </div>
+            <React.Fragment>
+                <Row className="p-3">
+                    <Col>
+                        <Button
+                            variant="primary"
+                            onClick={() => this.onBack()}
+                        >
+                            Back
+                        </Button>
+                    </Col>
+                </Row>
+                <Container>
+                    {
+                        error
+                            ?
+                            <Row>
+                                <Col className="center-align-item">
+                                    <h5>{error}</h5>
+                                </Col>
+                            </Row>
+                            :
+                            <React.Fragment>
+                                <Row>
+                                    <Col>
+                                        <DataTable
+                                            columns={this.columns}
+                                            dataItems={[this.state.game]}
+                                        />
+                                    </Col>
+                                </Row>
+                                <span className="center-align-item">
+                                    <Row className={`game-board ${game.status !== Enums.Statuses.Running ? 'disabled' : ''}`}>
+                                        {
+                                            game.board.map((move, index) => {
+                                                return (
+                                                    <Col key={index} lg="4" sm="4" xs="4" md="4" className="p-0">
+                                                        <Block
+
+                                                            blockNumber={index}
+                                                            move={move}
+                                                            onSelectingMove={this.onSelectingMove.bind(this)}
+                                                        />
+                                                    </Col>
+                                                )
+                                            })
+                                        }
+                                    </Row>
+                                </span>
+                            </React.Fragment>
+                    }
+                </Container>
+            </React.Fragment>
         );
     }
 }

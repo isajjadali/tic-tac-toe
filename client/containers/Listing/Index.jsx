@@ -1,10 +1,8 @@
 'use strict';
 
 import React from 'react';
-import { BrowserRouter as Router } from "react-router-dom";
 import { withRouter } from 'react-router-dom';
-import styles from './Index.scss';
-import Table from '../../components/Table/Index';
+import DataTable from '../../components/DataTable/Index';
 import GameService from '../../shared/services/games';
 import { actionsBuilder } from '../../shared/services/common';
 import { ListingColumns } from '../../shared/configuations/grid';
@@ -72,7 +70,7 @@ class Listing extends React.Component {
         const { dataItems } = this.state;
         return (
             <div className="listing">
-                <Table
+                <DataTable
                     dataItems={dataItems}
                     columns={ListingColumns(Enums.CapitalizedStatuses)}
                     actions={{

@@ -13,13 +13,14 @@ export function ListingColumns(CapitalizedStatuses) {
         },
         {
             field: 'id',
-            title: 'UUID',
+            title: '$uuid',
             availableOnDetail: true,
         },
         {
             field: 'status',
             title: 'Status',
             availableOnDetail: true,
+            cssClasses: 'font-weight-bold',
             callback: (status) => CapitalizedStatuses[status]
         },
         {

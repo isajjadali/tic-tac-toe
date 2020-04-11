@@ -23,3 +23,4 @@ export default Object.freeze({
     GamesApiUrl,
     CapitalizedStatuses,
 });
+

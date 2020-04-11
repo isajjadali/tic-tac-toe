@@ -36,7 +36,7 @@ export default class Block extends React.Component {
         const { move } = this.state;
         return (
             <div
-                className={`block ${move !== Enums.Moves.Empty ? 'disabled' : ''}`}
+                className={`block center-align-item ${move !== Enums.Moves.Empty ? 'disabled' : ''}`}
                 onClick={() => this.onClick()}
             >
                 <span>{move !== Enums.Moves.Empty && move}</span>
