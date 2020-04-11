@@ -1,8 +1,8 @@
 .block {
-    height: 125px;
-    border: 1px solid gray;
+    height: $block-height;
+    border: 1px solid $white;
 
     span {
-        font-size: 100px;
+        @extend .f-100;
     }
 }

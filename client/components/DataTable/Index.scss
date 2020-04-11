@@ -1,7 +1,7 @@
 .table-responsive {
-    max-height: calc(100vh - 210px);
+    max-height: $table-max-heigth;
 
     td {
-        font-size: 15px;
+        @extend .f-15;
     }
 }

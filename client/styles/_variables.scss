@@ -1,0 +1,13 @@
+// Colors Variables
+$white: white;
+$black: black;
+
+// Gaming Board Related Variables
+$game-board-width: 500px;
+$block-height: 125px;
+
+// Variables For Table
+$table-max-heigth: calc(100vh - 210px);
+
+// List Of Colors W.R.T Game Statuses
+$status-colors: ('running': 'text-primary', 'x_won': 'text-success', 'o_won': 'text-danger', 'draw': 'text-warning');

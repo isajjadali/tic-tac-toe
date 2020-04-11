@@ -1,7 +1,6 @@
 'use strict';
 
 import React from 'react';
-import styles from './Index.scss';
 import Enums from '../../shared/utils/enums';
 
 export default class Block extends React.Component {

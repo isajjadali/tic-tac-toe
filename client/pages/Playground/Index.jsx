@@ -1,7 +1,6 @@
 'use strict';
 
 import React from 'react';
-import styles from './Index.scss';
 import { withRouter } from 'react-router-dom';
 import DataTable from '../../components/DataTable/Index';
 import { ListingColumns } from '../../shared/configuations/grid';

@@ -1,9 +1,7 @@
+'use strict';
+
 import React from 'react';
-import styles from './index.scss';
-import {
-    Button,
-    Table,
-} from 'react-bootstrap';
+import { Button, Table } from 'react-bootstrap';
 
 export default function DataTable(props) {
     const { columns, dataItems, actions } = props;

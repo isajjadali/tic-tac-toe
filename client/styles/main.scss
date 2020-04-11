@@ -1,28 +1,11 @@
+// Bootstrap Scss File
 @import "~bootstrap/scss/bootstrap";
 
-.center-align-item {
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-}
+// Global And Variable Scss Files
+@import './variables';
+@import './global';
 
-.disabled {
-    pointer-events: none;
-    cursor: not-allowed;
-}
-
-.running {
-    @extend .text-primary;
-}
-
-.x_won {
-    @extend .text-success;
-}
-
-.o_won {
-    @extend .text-danger;
-}
-
-.draw {
-    @extend .text-warning;
-}
+// Individual Component Scss Files
+@import '../pages/Playground/Index';
+@import '../containers/Block/Index';
+@import '../components/DataTable/Index';
