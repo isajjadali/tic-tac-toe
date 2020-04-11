@@ -7,6 +7,9 @@ const { Statuses } = require('../../../common/enums');
 
 module.exports = function (router) {
 
+    /**
+     * Middleware That Append Game Object On Request If Exist.
+     */
     router.param('id', (req, res, next, id) => {
         const game = GameModal.getById(id);
 
@@ -17,6 +20,9 @@ module.exports = function (router) {
         next();
     });
 
+    /**
+     * CRUD operations of Games.
+     */
     router.route('/:id?')
         .get((req, res) => {
             if (req.game) {

@@ -13,12 +13,19 @@ export default class Block extends React.Component {
         };
     }
 
+    /**
+     * Update The Move State If Changes Comming From Parent Component.
+     * @param {object} nextProps
+     */
     componentWillReceiveProps(nextProps) {
         if (this.props.move !== nextProps.move) {
             this.setState({ move: nextProps.move });
         }
     }
 
+    /**
+     * Set New Move Of Client And Callback Parent Component To Update The Board Accordingly.
+     */
     onClick() {
         this.setState({ move: Enums.Moves.Client }, () => {
             this.props.onSelectingMove(this.props.blockNumber, this.state.move)

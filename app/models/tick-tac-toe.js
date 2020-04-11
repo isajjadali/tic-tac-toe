@@ -18,6 +18,11 @@ class TicTacToe {
         this.board = Board.initialState;
     }
 
+    /**
+     * Update The Board
+     * @param {string} board
+     * @returns {string}
+     */
     update(board = Statuses.initialState) {
         const parsedBoard = board.split('');
 
@@ -63,6 +68,14 @@ class TicTacToe {
         return this.board;
     }
 
+    /**
+     * Find The Winnig Posibility Of User/Server
+     * @param {Array} direction
+     * @param {Array} board
+     * @param {string} user
+     * @returns {boolean} 
+     * @private
+     */
     _findWinninfPossibility(direction, board, user) {
         const count = direction.reduce((acc, point) => {
             board[point] === user && ++acc;

@@ -1,6 +1,10 @@
 'use strict';
 
-export const RoutesConfiguration = {
+/**
+ * Configurations For Routes
+ * @readonly
+ */
+export const RoutesConfiguration = Object.freeze({
     home: {
         basePath: '/',
         path: '/home',
@@ -9,4 +13,4 @@ export const RoutesConfiguration = {
         path: '/playground',
         params: ['id'],
     },
-}
+});

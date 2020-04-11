@@ -1,5 +1,10 @@
 'use strict';
 
+/**
+ * Action Builder For Games.
+ * @param {object}
+ * @returns {Array}
+ */
 export function actionsBuilder({ Statuses } = {}) {
     const defaultConfig = {
         precondition: () => true,
@@ -26,10 +31,20 @@ export function actionsBuilder({ Statuses } = {}) {
     ]
 }
 
+/**
+ * Parse Board in Array
+ * @param {string} board
+ * @returns {Array}
+ */
 export function parseBoard(board) {
     return board.split('');
 }
 
+/**
+ * Convert Board In A String.
+ * @param {Array} board
+ * @returns {string}
+ */
 export function convertBoard(board) {
     return board.join('');
 }

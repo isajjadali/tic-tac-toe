@@ -1,8 +1,6 @@
-const debug = process.env.NODE_ENV !== 'production';
 const webpack = require('webpack');
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 
@@ -64,9 +62,6 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: 'index.html'
         }),
-        new CopyWebpackPlugin([
-            { from: CLIENT_DIR + '/assets', to: 'assets' },
-        ]),
     ]
 }
 

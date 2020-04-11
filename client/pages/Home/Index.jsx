@@ -13,6 +13,9 @@ class Home extends React.Component {
         super(props);
     }
 
+    /**
+     * Create A New Game And Redirect To That Game Location.
+     */
     onPlayGame() {
         GameService
             .create()

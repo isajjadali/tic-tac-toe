@@ -19,38 +19,60 @@ class Playground extends React.Component {
                 board: [],
             }
         }
-        this.columns = ListingColumns(Enums.StatusTranslations)
+        this.columns = ListingColumns(Enums.CapitalizedStatuses)
             .filter(column => column.availableOnDetail)
     }
 
+    /**
+     * Fetch Id From Params And Call `_fetchgamedetails` Method To Get Game Details.
+     */
     componentWillMount() {
         const { id } = this.props.match.params;
         id && this._fetchGameDetails(id);
     }
 
-    _fetchGameDetails(id) {
+    /**
+     * Fetch Data Of A Specific Game From Server and call `_parseResponse` method.
+     * @param {string} id
+     */
+    _fetchGameDetails(id = '') {
         GameService
             .get(id)
             .then(this._parseResponse.bind(this))
             .catch(err => this.setState({ error: err.reason }));
     }
 
-    _updateBoard(updatedGame) {
+    /**
+     * Update Board Of A Specific Game and call `_parseResponse` method.
+     * @param {object} updatedGame
+     */
+    _updateBoard(updatedGame = {}) {
         GameService
             .update(updatedGame.id, { board: convertBoard(updatedGame.board) })
             .then(this._parseResponse.bind(this));
     }
 
-    _parseResponse(response) {
+    /**
+     * Parse Response And Update The Current State Of Game.
+     * @param {object} response
+     */
+    _parseResponse(response = {}) {
         const game = { ...response.data.data };
         game.board = parseBoard(game.board);
         this.setState({ game: game });
     }
 
+    /**
+     * On Pressing Back Button, Move To Listing Games Layout.
+     */
     onBack() {
         this.props.history.goBack();
     }
 
+    /**
+     * On Selecting Move Of Client, It Update The Current State Of Game By Call `_updateboard` Method.
+     * @param {object} response
+     */
     onSelectingMove(block, move) {
         const game = { ...this.state.game };
         game.board[block] = move;

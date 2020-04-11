@@ -1,6 +1,11 @@
 'use strict';
 
-export function ListingColumns(StatusTranslations) {
+/**
+ * Grid Configurations For Listing Component
+ * @param {string} CapitalizedStatuses
+ * @return {Array}
+ */
+export function ListingColumns(CapitalizedStatuses) {
     return [
         {
             title: 'Index',
@@ -15,7 +20,7 @@ export function ListingColumns(StatusTranslations) {
             field: 'status',
             title: 'Status',
             availableOnDetail: true,
-            callback: (status) => StatusTranslations[status]
+            callback: (status) => CapitalizedStatuses[status]
         },
         {
             field: '$$actions',

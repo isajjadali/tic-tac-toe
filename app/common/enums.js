@@ -1,11 +1,21 @@
 'use strict';
 
+/**
+* Enums For Moves Of User And Server.
+* @readonly
+* @enum {string}
+*/
 module.exports.Moves = Object.freeze({
     Client: 'X',
     Server: 'O',
     Empty: '-',
 });
 
+/**
+* Enums For Statuses Of Game.
+* @readonly
+* @enum {string}
+*/
 module.exports.Statuses = Object.freeze({
     Draw: 'Draw',
     OWon: 'O_WON',
@@ -13,10 +23,20 @@ module.exports.Statuses = Object.freeze({
     XWon: 'X_WON'
 });
 
+/**
+* Enums For Board States.
+* @readonly
+* @enum {string}
+*/
 module.exports.Board = Object.freeze({
     initialState: '---------',
 });
 
+/**
+* Enums For Possible Winning Directions Of A Game.
+* @readonly
+* @enum {string}
+*/
 module.exports.PossibleWinningDirections = Object.freeze([
     [0, 1, 2],
     [0, 4, 8],
@@ -28,6 +48,11 @@ module.exports.PossibleWinningDirections = Object.freeze([
     [6, 7, 8],
 ]);
 
+/**
+* Enums For Most Tricking Directions A Game.
+* @readonly
+* @enum {string}
+*/
 module.exports.BestTrickingDirections = Object.freeze([
     [0, 1, 4],
     [0, 3, 4],

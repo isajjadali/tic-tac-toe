@@ -13,7 +13,8 @@ const customResponseMethodAppender = require('customize-response-appender')({
 const app = express();
 
 // <<<<<---------------MIDDLEWARES------------------------>>>>> 
-/*
+
+/** 
  * Kraken-js Configurations
  */
 const options = {
@@ -24,6 +25,7 @@ const options = {
 app.use(kraken(options));
 
 app.all('*', customResponseMethodAppender);
+
 // <<<<<--------------------------------------->>>>> 
 
 app.on('start', function () {
