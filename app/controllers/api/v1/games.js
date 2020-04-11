@@ -22,7 +22,7 @@ module.exports = function (router) {
             if (req.game) {
                 return res.http200(req.game);
             }
-            res.http200(GameModal.getAll());
+            res.http200(GameModal.getAll().reverse());
         })
         .post((req, res) => {
             const game = GameModal.create();

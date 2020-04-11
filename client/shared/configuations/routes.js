@@ -1,8 +1,9 @@
 'use strict';
 
 export const RoutesConfiguration = {
-    listing: {
-        path: '/listing',
+    home: {
+        basePath: '/',
+        path: '/home',
     },
     playground: {
         path: '/playground',

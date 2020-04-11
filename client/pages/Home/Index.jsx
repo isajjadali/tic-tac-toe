@@ -2,23 +2,34 @@
 
 import React from 'react';
 import styles from './Index.scss';
-import Playground from '../Playground/Index';
-import { BrowserRouter as Router } from 'react-router-dom';
-import GetRoutes from '../../Routes';
+import { withRouter } from 'react-router-dom';
+import GameService from '../../shared/services/games';
+import Listing from '../../containers/Listing/Index';
 
-export default class Home extends React.Component {
+import { RoutesConfiguration } from '../../shared/configuations/routes';
+class Home extends React.Component {
 
     constructor(props) {
         super(props);
     }
 
+    onPlayGame() {
+        GameService
+            .create()
+            .then(res => {
+                this.props.history.push(`${RoutesConfiguration.playground.path}/${res.data.data.id}`);
+            });
+    }
+
     render() {
         return (
             <div className="home">
-                <Router>
-                    {GetRoutes()}
-                </Router>
+                <div>
+                    <button onClick={() => this.onPlayGame()}>Play Game</button>
+                </div>
+                <Listing />
             </div>
         );
     }
-} 
+}
+export default withRouter(Home);

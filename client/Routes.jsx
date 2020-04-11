@@ -8,7 +8,7 @@ import { RoutesConfiguration } from './shared/configuations/routes';
 
 // Components
 import Playground from './pages/Playground/Index';
-import Listing from './containers/Listing/Index';
+import Home from './pages/Home/Index';
 
 const Routes = [
     {
@@ -16,8 +16,8 @@ const Routes = [
         component: Playground
     },
     {
-        ...RoutesConfiguration.listing,
-        component: Listing
+        ...RoutesConfiguration.home,
+        component: Home
     },
 ];
 
@@ -33,7 +33,7 @@ export default function GetRoutes() {
                 })
             }
             <Route exact path='/'>
-                <Redirect to={RoutesConfiguration.listing.path} />
+                <Redirect to={RoutesConfiguration.home.path} />
             </Route>
         </Switch>
     )
