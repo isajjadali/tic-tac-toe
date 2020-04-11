@@ -1,6 +1,8 @@
 'use strict';
 
 import React from 'react';
+
+// Enums
 import Enums from '../../shared/utils/enums';
 
 export default class Block extends React.Component {

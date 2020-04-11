@@ -1,3 +1,5 @@
+'use strict';
+
 const api = "api";
 const apiVersion = "v1";
 const GamesApiUrl = `/${api}/${apiVersion}/games`;

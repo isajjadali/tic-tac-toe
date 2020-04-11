@@ -1,5 +1,7 @@
+'use strict';
+
 import React from 'react';
-import { Navbar } from 'react-bootstrap'
+import { Navbar } from 'react-bootstrap';
 
 export default function CustomizeNavbar(props) {
     const { title, createdBy, portfolioLink } = props;

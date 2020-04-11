@@ -21,6 +21,9 @@ const Routes = [
     },
 ];
 
+/**
+ * Create Routes
+ */
 export default function GetRoutes() {
     return (
         <Switch>
@@ -39,6 +42,12 @@ export default function GetRoutes() {
     )
 }
 
+/**
+ * Map Params in Route
+ * @param {string} path
+ * @param {array} params
+ * @returns {string}
+ */
 function mapParamsInRoutePath(path, params) {
     return `${path}/:${params.join('/:')}`
 }

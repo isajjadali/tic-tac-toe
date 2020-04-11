@@ -2,15 +2,17 @@
 
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import GameService from '../../shared/services/games';
-import Listing from '../../containers/Listing/Index';
+import { Button, Container, Row, Col } from 'react-bootstrap';
+
+// Enums & Configuration
 import { RoutesConfiguration } from '../../shared/configuations/routes';
-import {
-    Button,
-    Container,
-    Row,
-    Col
-} from 'react-bootstrap';
+
+// Services
+import GameService from '../../shared/services/games';
+
+// Components
+import Listing from '../../containers/Listing/Index';
+
 class Home extends React.Component {
 
     constructor(props) {

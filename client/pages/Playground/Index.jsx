@@ -2,18 +2,19 @@
 
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import DataTable from '../../components/DataTable/Index';
-import { ListingColumns } from '../../shared/configuations/grid';
+import { Button, Container, Row, Col } from 'react-bootstrap';
+
+// Enums & Configurations
 import Enums from '../../shared/utils/enums';
+import { ListingColumns } from '../../shared/configuations/grid';
+
+// Services
 import GameService from '../../shared/services/games';
-import Block from '../../containers/Block/Index';
 import { convertBoard, parseBoard } from '../../shared/services/common';
-import {
-    Button,
-    Container,
-    Row,
-    Col
-} from 'react-bootstrap';
+
+// Components
+import DataTable from '../../components/DataTable/Index';
+import Block from '../../containers/Block/Index';
 
 class Playground extends React.Component {
 

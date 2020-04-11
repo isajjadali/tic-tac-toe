@@ -2,13 +2,18 @@
 
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import DataTable from '../../components/DataTable/Index';
-import GameService from '../../shared/services/games';
-import { actionsBuilder } from '../../shared/services/common';
-import { ListingColumns } from '../../shared/configuations/grid';
+
+// Enums & Configurations
 import Enums from '../../shared/utils/enums';
+import { ListingColumns } from '../../shared/configuations/grid';
 import { RoutesConfiguration } from '../../shared/configuations/routes';
 
+// Services
+import GameService from '../../shared/services/games';
+import { actionsBuilder } from '../../shared/services/common';
+
+// Components
+import DataTable from '../../components/DataTable/Index';
 class Listing extends React.Component {
 
     constructor(props) {
