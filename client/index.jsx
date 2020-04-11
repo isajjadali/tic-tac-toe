@@ -1,10 +1,20 @@
 import React from 'react';
 import { render } from 'react-dom';
 import styles from "./styles/main.scss";
+import { axiosInterceptor } from './shared/utils/interceptors';
+axiosInterceptor();
+
+import Navbar from './components/Navbar/Index';
+import Home from './pages/Home/Index';
 
 class App extends React.Component {
     render() {
-        return <h1>Welcome to you React App.</h1>;
+        return (
+            <React.Fragment>
+                <Navbar title="Tic Tac Toe" />
+                <Home />
+            </React.Fragment>
+        )
     }
 }
 

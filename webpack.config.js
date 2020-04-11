@@ -13,12 +13,16 @@ module.exports = {
     entry: `${CLIENT_DIR}/Index.jsx`,
     output: {
         path: BUILD_DIR,
+        publicPath: '/',
         filename: 'bundle.js'
+    },
+    resolve: {
+        extensions: ['.js', '.jsx', '.scss'],
     },
     watch: true,
     module: {
         rules: [{
-            test: /\.jsx?/,
+            test: /\.jsx?$/,
             include: CLIENT_DIR,
             exclude: [/node_modules/],
             use: {
@@ -27,7 +31,7 @@ module.exports = {
             }
         },
         {
-            test: /\.scss?/,
+            test: /\.s[ac]ss$/i,
             include: CLIENT_DIR,
             exclude: [/node_modules/],
             use: ExtractTextPlugin.extract({
@@ -57,7 +61,6 @@ module.exports = {
             $: 'jquery',
             jQuery: 'jquery'
         }),
-        new CopyWebpackPlugin([{ from: `${CLIENT_DIR}/static` }]),
         new HtmlWebpackPlugin({
             template: 'index.html'
         }),

@@ -1,5 +1,6 @@
+'use strict';
 
-module.exports.Symbols = Object.freeze({
+module.exports.Moves = Object.freeze({
     Client: 'X',
     Server: 'O',
     Empty: '-',
