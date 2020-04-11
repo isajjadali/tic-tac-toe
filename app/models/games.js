@@ -4,32 +4,28 @@ const TicTacToe = require('./tick-tac-toe');
 
 class Games {
     constructor() {
-        this.games = [];
+        this.games = {};
     }
 
     getAll() {
-        return this.games;
+        return Object.values(this.games);
     }
 
     create() {
         const game = new TicTacToe();
-        this.games.unshift(game);
+        this.games[game.id] = game;
         return game;
     }
 
     getById(id) {
-        return this.games.find(game => game.id === id);
+        return this.games[id];
     }
 
     delete(id) {
-        const isGameExistAgainstId = this.games.findIndex(game => game.id === id);
-
-        if (isGameExistAgainstId > -1) {
-            this.games.splice(isGameExistAgainstId, 1);
-            return true;
+        if (!this.getById(id)) {
+            return false;
         }
-
-        return false;
+        return delete this.games[id];
     }
 }
 
