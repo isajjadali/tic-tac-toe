@@ -15,6 +15,7 @@ import {
     Row,
     Col
 } from 'react-bootstrap';
+
 class Playground extends React.Component {
 
     constructor(props) {
@@ -90,31 +91,21 @@ class Playground extends React.Component {
             <React.Fragment>
                 <Row className="p-3">
                     <Col>
-                        <Button
-                            variant="primary"
-                            onClick={() => this.onBack()}
-                        >
-                            Back
-                        </Button>
+                        <Button variant="primary" onClick={() => this.onBack()}>Back</Button>
                     </Col>
                 </Row>
                 <Container>
                     {
-                        error
-                            ?
+                        error ?
                             <Row>
                                 <Col className="center-align-item">
                                     <h5>{error}</h5>
                                 </Col>
-                            </Row>
-                            :
+                            </Row> :
                             <React.Fragment>
                                 <Row>
                                     <Col>
-                                        <DataTable
-                                            columns={this.columns}
-                                            dataItems={[this.state.game]}
-                                        />
+                                        <DataTable columns={this.columns} dataItems={[this.state.game]} />
                                     </Col>
                                 </Row>
                                 <span className="center-align-item">
@@ -122,9 +113,12 @@ class Playground extends React.Component {
                                         {
                                             game.board.map((move, index) => {
                                                 return (
-                                                    <Col key={index} lg="4" sm="4" xs="4" md="4" className="p-0">
+                                                    <Col
+                                                        key={index}
+                                                        className="p-0"
+                                                        lg="4" sm="4" xs="4" md="4"
+                                                    >
                                                         <Block
-
                                                             blockNumber={index}
                                                             move={move}
                                                             onSelectingMove={this.onSelectingMove.bind(this)}
