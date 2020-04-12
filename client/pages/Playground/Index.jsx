@@ -42,11 +42,11 @@ class Playground extends React.Component {
      * @param {string} id
      * @private
      */
-    _fetchGameDetails(id = '') {
-        GameService
+    async _fetchGameDetails(id = '') {
+        const response = await GameService
             .get(id)
-            .then(this._parseResponse.bind(this))
-            .catch(err => this.setState({ error: err.reason }));
+            .catch(err => this.setState({ error: err.reason }));;
+        this._parseResponse(response);
     }
 
     /**
@@ -54,10 +54,10 @@ class Playground extends React.Component {
      * @param {object} updatedGame
      * @private
      */
-    _updateBoard(updatedGame = {}) {
-        GameService
-            .update(updatedGame.id, { board: convertBoard(updatedGame.board) })
-            .then(this._parseResponse.bind(this));
+    async _updateBoard(updatedGame = {}) {
+        const response = await GameService
+            .update(updatedGame.id, { board: convertBoard(updatedGame.board) });
+        this._parseResponse(response);
     }
 
     /**

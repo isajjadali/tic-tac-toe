@@ -19,38 +19,40 @@ module.exports = {
     },
     watch: true,
     module: {
-        rules: [{
-            test: /\.jsx?$/,
-            include: CLIENT_DIR,
-            exclude: [/node_modules/],
-            use: {
-                loader: 'babel-loader'
+        rules: [
+            {
+                test: /\.jsx?$/,
+                include: CLIENT_DIR,
+                exclude: [/node_modules/],
+                loader: 'babel-loader',
+                options: {
+                    presets: ['@babel/env', '@babel/react'],
+                    plugins: ['@babel/plugin-transform-runtime'],
+                },
+            },
+            {
+                test: /\.s[ac]ss$/i,
+                include: CLIENT_DIR,
+                exclude: [/node_modules/],
+                use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: ['css-loader', 'sass-loader']
+                })
 
-            }
-        },
-        {
-            test: /\.s[ac]ss$/i,
-            include: CLIENT_DIR,
-            exclude: [/node_modules/],
-            use: ExtractTextPlugin.extract({
-                fallback: 'style-loader',
-                use: ['css-loader', 'sass-loader']
-            })
-
-        },
-        { test: /\.jpg|png|gif|svg$/, loader: 'file' },
-        {
-            test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
-            loader: 'url?limit=10000&mimetype=application/font-woff'
-        },
-        {
-            test: /\.(ttf|otf)(\?v=\d+\.\d+\.\d+)?$/,
-            loader: 'url?limit=10000&mimetype=application/octet-stream'
-        },
-        {
-            test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-            loader: 'file'
-        }
+            },
+            { test: /\.jpg|png|gif|svg$/, loader: 'file' },
+            {
+                test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
+                loader: 'url?limit=10000&mimetype=application/font-woff'
+            },
+            {
+                test: /\.(ttf|otf)(\?v=\d+\.\d+\.\d+)?$/,
+                loader: 'url?limit=10000&mimetype=application/octet-stream'
+            },
+            {
+                test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
+                loader: 'file'
+            },
         ]
     },
     plugins: [

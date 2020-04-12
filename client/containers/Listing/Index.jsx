@@ -35,13 +35,11 @@ class Listing extends React.Component {
      * Fetch Data From Server, Call `_setActionButtons` method And Set The State.
      * @private
      */
-    _loadItems() {
-        GameService.get()
-            .then(res => {
-                const { dataItems } = res.data;
-                this._setActionButtons(dataItems);
-                this.setState({ dataItems });
-            });
+    async _loadItems() {
+        const response = await GameService.get();
+        const { dataItems } = response.data;
+        this._setActionButtons(dataItems);
+        this.setState({ dataItems });
     }
 
     /**
@@ -60,15 +58,15 @@ class Listing extends React.Component {
      * Delete The Game And Call `_loaditems` Methods To Sync Latest Data.
      * @param {object} item
      */
-    onDelete(item = {}) {
-        GameService.delete(item.id)
-            .then(res => this._loadItems());
+    async onDelete(item = {}) {
+        await GameService.delete(item.id)
+        this._loadItems();
     }
 
-     /**
-     * Move User To Playground Area Of Specific Game.
-     * @param {object} item
-     */
+    /**
+    * Move User To Playground Area Of Specific Game.
+    * @param {object} item
+    */
     onPlay(item = {}) {
         this.props.history.push(`${RoutesConfiguration.playground.path}/${item.id}`);
     }
