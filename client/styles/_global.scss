@@ -1,0 +1,38 @@
+// Color Classes W.R.T Statuses
+@each $key,
+$value in $status-colors {
+    .#{$key} {
+        @extend .#{$value};
+    }
+}
+
+// Font Size Classes
+.f-100 {
+    font-size: 100px;
+}
+
+.f-15 {
+    font-size: 15px;
+}
+
+// Place Child Element In Center Of Element
+.center-align-item {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+// Cursor Classes
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.cursor-not-allowed {
+    cursor: not-allowed;
+}
+
+// Disabled Element
+.disabled {
+    pointer-events: none;
+    @extend .cursor-not-allowed;
+}

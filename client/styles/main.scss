@@ -1,3 +1,11 @@
-h1 {
-    font-size: 32px;
-}
+// Bootstrap Scss File
+@import "~bootstrap/scss/bootstrap";
+
+// Global And Variable Scss Files
+@import './variables';
+@import './global';
+
+// Individual Component Scss Files
+@import '../pages/Playground/Index';
+@import '../containers/Block/Index';
+@import '../components/DataTable/Index';

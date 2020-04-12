@@ -1,0 +1,7 @@
+.table-responsive {
+    max-height: $table-max-heigth;
+
+    td {
+        @extend .f-15;
+    }
+}

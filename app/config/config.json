@@ -17,12 +17,15 @@
                 ]
             }
         },
-        "pagination": {
-            "enabled": false,
-            "priority": 200,
-            "route": "/api",
+        "appsec": {
+            "priority": 110,
             "module": {
-                "name": "path:./middlewares/pagination"
+                "name": "lusca",
+                "arguments": [
+                    {
+                        "csrf": false
+                    }
+                ]
             }
         }
     },

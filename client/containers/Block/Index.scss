@@ -1,0 +1,9 @@
+.block {
+    height: $block-height;
+    border: 1px solid $white;
+    @extend .cursor-pointer;
+
+    span {
+        @extend .f-100;
+    }
+}
