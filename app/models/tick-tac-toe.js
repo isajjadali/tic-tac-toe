@@ -34,49 +34,92 @@ class TicTacToe {
                 && this._runBestTrickingMove(parsedBoard))
 
         return this.board = parsedBoard.join('');
-
     }
 
+    /**
+     * It Updates The Status
+     * @param {string} status
+     * @private
+     */
+    _updateStatus(status) {
+        this.status = status;
+    }
+
+    /**
+     * It Updates The Status If Client Wins
+     * @param {Array} parsedBoard
+     * @return {boolean}
+     * @private
+     */
     _isXWon(parsedBoard = []) {
         return PossibleWinningDirections.some(direction => {
             if (direction.every(point => parsedBoard[point] === Moves.Client)) {
-                this.status = Statuses.XWon;
+                this._updateStatus(Statuses.XWon);
                 return true;
             }
         });
     }
 
-
+    /**
+     * It Updates The Status If Server Wins
+     * @param {Array} parsedBoard
+     * @return {boolean}
+     * @private
+     */
     _makeOWin(parsedBoard = []) {
-        return PossibleWinningDirections.some(direction => {
-            const winningPossibility = this._findWinningPossibility(direction, parsedBoard, Moves.Server);
-            if (winningPossibility.exist) {
-                parsedBoard[winningPossibility.emptyPoint] = Moves.Server;
-                this.status = Statuses.OWon;
-                return true;
-            }
+        return this._isWinningPossibilityExist(parsedBoard, Moves.Server, (point) => {
+            parsedBoard[point] = Moves.Server;
+            this._updateStatus(Statuses.OWon);
+            return true;
         });
     }
 
+    /**
+     * It Stops The Client To Win 
+     * @param {Array} parsedBoard
+     * @return {boolean}
+     * @private
+     */
     _stopXToWin(parsedBoard = []) {
-        return PossibleWinningDirections.some(direction => {
-            const winningPossibility = this._findWinningPossibility(direction, parsedBoard, Moves.Client);
-            if (winningPossibility.exist) {
-                parsedBoard[winningPossibility.emptyPoint] = Moves.Server;
-                return true;
-            }
+        return this._isWinningPossibilityExist(parsedBoard, Moves.Client, (point) => {
+            parsedBoard[point] = Moves.Server;
+            return true;
         });
     }
 
+    /**
+     * It Checks The Winning Possibilty Of One'S 
+     * @param {Array} parsedBoard
+     * @return {boolean}
+     * @private
+     */
+    _isWinningPossibilityExist(parsedBoard = [], move, callback) {
+        return PossibleWinningDirections.some(direction => {
+            const winningPossibility = this._findWinningPossibility(direction, parsedBoard, move);
+            return winningPossibility.exist && callback(winningPossibility.emptyPoint);
+        });
+    }
+
+    /**
+     * It Updates The Status If Game Is Draw 
+     * @param {Array} parsedBoard
+     * @return {boolean}
+     * @private
+     */
     _isGameDraw(parsedBoard = []) {
         if (parsedBoard.filter(point => point === Moves.Empty).length <= 2) {
-            this.status = Statuses.Draw;
+            this._updateStatus(Statuses.Draw);
             return true;
         }
         return false;
     }
 
-
+    /**
+     * It Select The Best Tricking Direction To Update The Server Move 
+     * @param {Array} parsedBoard
+     * @return {boolean}
+     * @private
+     */
     _selectBestTrickingDirection(parsedBoard = []) {
         if (
             !selectedWinningPossibilty.length
@@ -88,6 +131,12 @@ class TicTacToe {
         return true;
     }
 
+    /**
+     * It Update The Best Possible Move For Server 
+     * @param {Array} parsedBoard
+     * @return {boolean}
+     * @private
+     */
     _runBestTrickingMove(parsedBoard = []) {
         selectedWinningPossibilty.every(point => {
             if (parsedBoard[point] === Moves.Empty) {
@@ -103,7 +152,7 @@ class TicTacToe {
      * @param {Array} direction
      * @param {Array} parsedBoard
      * @param {string} move
-     * @returns {boolean} 
+     * @returns {object} 
      * @private
      */
     _findWinningPossibility(direction, parsedBoard, move) {

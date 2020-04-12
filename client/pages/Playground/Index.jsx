@@ -40,6 +40,7 @@ class Playground extends React.Component {
     /**
      * Fetch Data Of A Specific Game From Server and call `_parseResponse` method.
      * @param {string} id
+     * @private
      */
     _fetchGameDetails(id = '') {
         GameService
@@ -51,6 +52,7 @@ class Playground extends React.Component {
     /**
      * Update Board Of A Specific Game and call `_parseResponse` method.
      * @param {object} updatedGame
+     * @private
      */
     _updateBoard(updatedGame = {}) {
         GameService
@@ -61,6 +63,7 @@ class Playground extends React.Component {
     /**
      * Parse Response And Update The Current State Of Game.
      * @param {object} response
+     * @private
      */
     _parseResponse(response = {}) {
         const game = { ...response.data.data };

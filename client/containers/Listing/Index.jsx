@@ -33,6 +33,7 @@ class Listing extends React.Component {
 
     /**
      * Fetch Data From Server, Call `_setActionButtons` method And Set The State.
+     * @private
      */
     _loadItems() {
         GameService.get()
@@ -46,6 +47,7 @@ class Listing extends React.Component {
     /**
      * Set $$Actions Array For Each Item Of Array.
      * @param {Array} dataItems
+     * @private
      */
     _setActionButtons(dataItems = []) {
         dataItems.forEach(item => {
