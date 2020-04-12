@@ -22,8 +22,17 @@ $value in $status-colors {
     align-items: center !important;
 }
 
+// Cursor Classes
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.cursor-not-allowed {
+    cursor: not-allowed;
+}
+
 // Disabled Element
 .disabled {
     pointer-events: none;
-    cursor: not-allowed;
+    @extend .cursor-not-allowed;
 }
