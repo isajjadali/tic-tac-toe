@@ -1,7 +1,5 @@
 'use strict';
 
-const TicTacToe = require('./tick-tac-toe');
-
 class Games {
     constructor() {
         this.games = {};
@@ -17,10 +15,10 @@ class Games {
 
     /**
      * Create A New Game
+     * @param {object} game
      * @returns {object}
      */
-    create() {
-        const game = new TicTacToe();
+    create(game) {
         this.games[game.id] = game;
         return game;
     }

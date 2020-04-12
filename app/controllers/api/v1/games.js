@@ -1,6 +1,7 @@
 'use strict';
 
 const Games = require('../../../models/games');
+const TicTacToe = require('../../../models/tick-tac-toe');
 
 const GameModal = new Games();
 const { Statuses } = require('../../../common/enums');
@@ -31,15 +32,12 @@ module.exports = function (router) {
             res.http200(GameModal.getAll().reverse());
         })
         .post((req, res) => {
-            const game = GameModal.create();
+            const game = new TicTacToe();
+            GameModal.create(game);
             res.http200(game);
         })
         .delete((req, res) => {
-            const isGameDeletedSuccessfully = GameModal.delete(req.params.id);
-
-            if (!isGameDeletedSuccessfully) {
-                return res.http404(`Game not found against id: ${id}`);
-            }
+            GameModal.delete(req.params.id);
             res.http200('Game successfully deleted');
         })
         .put((req, res) => {

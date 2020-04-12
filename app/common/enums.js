@@ -49,7 +49,7 @@ module.exports.PossibleWinningDirections = Object.freeze([
 ]);
 
 /**
-* Enums For Most Tricking Directions A Game.
+* Enums For Most Tricking Directions Of A Game.
 * @readonly
 * @enum {string}
 */
